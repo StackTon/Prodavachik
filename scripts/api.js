@@ -93,7 +93,6 @@
         }
     });
 }}();
-=======
 	
 	    // Loading of adverts
     $.mockjax(function (requestSettings) {
