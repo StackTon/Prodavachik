@@ -1,5 +1,4 @@
 (function () {
-// Mock repository
 	    // Mock repository
     let users = [
         {
