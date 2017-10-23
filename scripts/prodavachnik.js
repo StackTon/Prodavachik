@@ -43,6 +43,7 @@ function startApp() {
             $("#linkLogin").hide();
             $("#linkRegister").hide();
 			$("#linkListAds").show();
+			$("#linkCreateAd").show();
             $("#linkLogout").show();
         }
     }
@@ -298,5 +299,4 @@ function startApp() {
             listAdverts();
         }
     }
-
 }
