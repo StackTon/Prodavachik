@@ -162,6 +162,8 @@ footer {
 
 
 }
+
+}
 #infoBox, #errorBox, #loadingBox {
     width: 100%;
     color: white;
@@ -179,4 +181,5 @@ footer {
 #errorBox {
     background: #F50;
 }
+
 
