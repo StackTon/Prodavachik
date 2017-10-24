@@ -4,6 +4,7 @@ function startApp() {
         let username = sessionStorage.getItem('username');
         $('#loggedInUser').text("Welcome, " + username + "!");
     }
+
     showHideMenuLinks();
     showHomeView();
 
@@ -21,10 +22,17 @@ function startApp() {
     $("#buttonCreateAd").click(createAdvert);
     $("#buttonEditAd").click(editAdvert);
 
-    // Bind the info / error boxes
+
+	
+	// Bind the info / error boxes
     $("#infoBox, #errorBox").click(function() {
         $(this).fadeOut();
     });
+	
+	const kinveyBaseUrl = "https://mock.api.com/";
+    const kinveyAppKey = "kid_rk";
+    const kinveyAppSecret = "736804a668";
+
 
     // Attach AJAX "loading" event listener
     $(document).on({
@@ -63,7 +71,8 @@ function startApp() {
         }
     }
 
-    function showInfo(message) {
+  	function showInfo(message) {
+
         $('#infoBox').text(message);
         $('#infoBox').show();
         setTimeout(function() {
@@ -122,13 +131,16 @@ function startApp() {
             data: userData,
             success: loginSuccess,
             error: handleAjaxError
+
         });
 
         function loginSuccess(userInfo) {
             saveAuthInSession(userInfo);
             showHideMenuLinks();
             listAdverts();
+
             showInfo('Login successful.');
+
         }
     }
 
@@ -140,6 +152,7 @@ function startApp() {
         let username = userInfo.username;
         sessionStorage.setItem('username', username);
         $('#loggedInUser').text("Welcome, " + username + "!");
+
     }
 
     // user/register
@@ -161,6 +174,7 @@ function startApp() {
             data: userData,
             success: registerSuccess,
             error: handleAjaxError
+
         });
 
         function registerSuccess(userInfo) {
@@ -168,7 +182,9 @@ function startApp() {
             saveAuthInSession(userInfo);
             showHideMenuLinks();
             listAdverts();
+
             showInfo('User registration successful.');
+
         }
     }
 
@@ -179,6 +195,7 @@ function startApp() {
         showHideMenuLinks();
         showHomeView();
         showInfo('Logout successful.');
+
     }
 
     // advertisement/all
@@ -196,10 +213,11 @@ function startApp() {
             headers: kinveyAuthHeaders,
             success: loadAdvertsSuccess,
             error: handleAjaxError
+
         });
 
         function loadAdvertsSuccess(adverts) {
-            showInfo('Advertisements loaded.');
+		  	showInfo('Advertisements loaded.');
             if (adverts.length === 0) {
                 $('#ads').text('No advertisements available.');
             } else {
@@ -281,6 +299,7 @@ function startApp() {
             function createAdvertSuccess(response) {
                 listAdverts();
                 showInfo('Advertisement created.');
+
             }
         }
     }
@@ -304,6 +323,7 @@ function startApp() {
         function deleteBookSuccess(response) {
             listAdverts();
             showInfo('Advert deleted.');
+
         }
     }
 
@@ -400,6 +420,7 @@ function startApp() {
         function editAdvertSuccess(response) {
             listAdverts();
             showInfo('Advertisement edited.');
+
         }
     }
 }
