@@ -36,6 +36,7 @@ function startApp() {
     const kinveyAppKey = "kid_rk";
     const kinveyAppSecret = "736804a668";
 
+
     function showView(viewName) {
         // Hide all views and show the selected view only
         $('main > section').hide();
@@ -64,6 +65,7 @@ function startApp() {
     }
 
     function showInfo(message) {
+
         $('#infoBox').text(message);
         $('#infoBox').show();
         setTimeout(function() {
@@ -128,7 +130,9 @@ function startApp() {
             saveAuthInSession(userInfo);
             showHideMenuLinks();
             listAdverts();
+
             showInfo('Login successful.');
+
         }
     }
 
@@ -179,6 +183,7 @@ function startApp() {
         showHideMenuLinks();
         showHomeView();
         showInfo('Logout successful.');
+
     }
 
     // advertisement/all
@@ -199,7 +204,9 @@ function startApp() {
         });
 
         function loadAdvertsSuccess(adverts) {
+			
             showInfo('Advertisements loaded.');
+
             if (adverts.length === 0) {
                 $('#ads').text('No advertisements available.');
             } else {
@@ -281,6 +288,7 @@ function startApp() {
             function createAdvertSuccess(response) {
                 listAdverts();
                 showInfo('Advertisement created.');
+
             }
         }
     }
@@ -400,6 +408,7 @@ function startApp() {
         function editAdvertSuccess(response) {
             listAdverts();
             showInfo('Advertisement edited.');
+
         }
     }
 }
